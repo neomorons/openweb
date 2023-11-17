@@ -1,0 +1,614 @@
+<!DOCTYPE html>
+
+<html lang="en" dir="ltr">
+
+<head>
+    <meta charset="utf-8">
+    <title>Image Resizer | Honey Paptan</title>
+
+
+    <link type="image/png" sizes="16x16" rel="icon" href="https://i.ibb.co/9tLDWB9/icons8-image-material-rounded-16.png"
+        <script src="https://kit.fontawesome.com/6903b50715.js" crossorigin="anonymous">
+    </script>
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        /* Import Google font  */
+
+        @import url('https://fonts.googleapis.com/css2?family=Barlow:wght@300;400;500;600;700;800;900&display=swap');
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Barlow', sans-serif;
+        }
+
+        body {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            
+            background: black;
+           
+            color: white;
+        }
+    
+        
+        body.dark-mode {
+            background: #030001;
+            color: white;
+        }
+        .heading h1 {
+            color: black;
+            margin-bottom: 10px;
+            font-size: 2.5rem;
+
+        }
+
+        .heading {
+            text-align: center;
+        }
+
+        .wrapper {
+            width: 450px;
+           
+            height: 288px;
+            padding: 30px;
+            background: black;
+            border-radius: 9px;
+            transition: height 0.2s ease;
+
+        }
+
+        .wrapper.active {
+            height: 537px;
+        }
+
+        .wrapper .upload-box {
+            height: 225px;
+            display: flex;
+            cursor: pointer;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+            border-radius: 5px;
+            border: 2px dashed white;
+        }
+
+        .wrapper.active .upload-box {
+            border: none;
+        }
+
+        .upload-box p {
+            font-size: 1.06rem;
+            margin-top: 20px;
+            color: white;
+        }
+
+        .wrapper.active .upload-box p {
+            display: none;
+        }
+
+        .wrapper.active .upload-box img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 5px;
+        }
+
+        .wrapper .content {
+            opacity: 0;
+            margin-top: 28px;
+            pointer-events: none;
+        }
+
+        .wrapper.active .content {
+            opacity: 1;
+            pointer-events: auto;
+            transition: opacity 0.5s 0.05s ease;
+        }
+
+        .content .row {
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .content .row .column {
+            width: calc(100% / 2 - 15px);
+        }
+
+        .row .column label {
+            font-size: 1.06rem;
+            font-weight: 600;
+        }
+
+        .sizes .column input {
+            width: 100%;
+            height: 49px;
+            outline: none;
+            margin-top: 7px;
+            padding: 0 15px;
+            font-size: 1.06rem;
+            border-radius: 4px;
+            border: 1px solid #000000;
+        }
+
+        .sizes .column input:focus {
+            padding: 0 14px;
+            border: 2px solid black;
+        }
+
+        .content .checkboxes {
+            margin-top: 20px;
+        }
+
+        .checkboxes .column {
+            display: flex;
+            align-items: center;
+        }
+
+        .checkboxes .column input {
+            width: 17px;
+            height: 17px;
+            margin-right: 9px;
+            accent-color: black;
+        }
+
+        .content .download-btn {
+            width: 100%;
+            color: black;
+            outline: none;
+            border: none;
+            font-family: 'Barlow', sans-serif;
+            cursor: pointer;
+            font-size: 1.06rem;
+            border-radius: 5px;
+            padding: 15px 0;
+            margin: 30px 0 10px;
+            background: white;
+
+        }
+        .dark-mode-toggle {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            display: flex;
+            align-items: center;
+            color: white;
+        }
+
+        .dark-mode-toggle label {
+            margin-right: 5px;
+        }
+
+        .toggle-btn {
+            width: 40px;
+            height: 20px;
+            background: #ccc;
+            border-radius: 10px;
+            margin-left: 5px;
+            display: flex;
+            align-items: center;
+            cursor: pointer;
+            position: relative;
+        }
+
+        .toggle-btn:before {
+            content: "";
+            width: 18px;
+            height: 18px;
+            background: white;
+            border-radius: 50%;
+            transition: 0.3s;
+            position: absolute;
+            transform: translateX(0);
+        }
+
+        #dark-mode:checked+.toggle-btn:before {
+            transform: translateX(20px);
+        }
+
+        /* Media queries for responsiveness */
+        @media only screen and (min-width: 600px) {
+            .wrapper {
+                width: 95%;
+            }
+        }
+
+        @media only screen and (min-width: 414px) {
+            .wrapper {
+                margin-left: 10px;
+                width: 95%;
+            }
+        }
+
+        @media only screen and (min-width: 768px) {
+            .wrapper {
+                width: 100%;
+            }
+        }
+
+        @media only screen and (min-width: 1024px) {
+            .wrapper {
+                width: 100%;
+            }
+        }
+
+
+        :root {
+  --white: #fdfdfa;
+  --black: #4d4d4d;
+  --primary: #00b7c6;
+  --grey--dark: #aca79a;
+}
+
+:root[data-theme="dark"] {
+  --white: #4d4d4d;
+  --black: #efeeeb;
+  --primary: #ff851b;
+}
+
+body {
+  font-size: 1rem;
+  color: var(--white);
+  background: var(--black);
+  font-family: monospace;
+  line-height: 1.7;
+  padding: 4rem;
+}
+
+.dark-mode-toggle {
+  appearance: none;
+  -moz-appearance: none;
+  -webkit-appearance: none;
+  background: none;
+  display: inline-block;
+  border: none;
+  border-radius: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 4rem;
+  height: 4rem;
+  cursor: pointer;
+  overflow: hidden;
+  border-radius: .4rem;
+  border: .2rem solid var(--grey--dark);
+}
+
+.dark-mode-toggle:focus {
+  outline: none;
+  border-color: var(--primary);
+}
+
+:root[data-theme="dark"] .dark-mode-toggle__text:before {
+  content: "deactivate ";
+}
+
+:root[data-theme="light"] .dark-mode-toggle__text:before {
+  content: "activate ";
+}
+
+.dark-mode-toggle__icon {
+  display: block;
+  background: var(--grey--dark);
+  border-radius: 50%;
+  width: 2rem;
+  height: 2rem;
+  position: relative;
+  transition: width 0.3s, height 0.3s;
+  z-index: 1;
+  transform: rotate(-20deg);
+}
+
+.dark-mode-toggle__icon:before {
+  z-index: 0;
+  content: "";
+  position: absolute;
+  display: block;
+  border-right: none;
+  border-radius: 50%;
+  width: 2.4rem;
+  height: 2.4rem;
+  top: 50%;
+  left: 50%;
+  transition: opacity 0.3s, background-image 03s;
+  opacity: 0;
+  transform: translate(-50%, -50%) rotate(0deg);
+  animation: spin__rays 4s linear infinite;
+  background-image: linear-gradient(
+      0deg,
+      transparent 46%,
+      var(--grey--dark) 46%,
+      var(--grey--dark) 54%,
+      transparent 54%
+    ),
+    linear-gradient(
+      90deg,
+      transparent 46%,
+      var(--grey--dark) 46%,
+      var(--grey--dark) 54%,
+      transparent 54%
+    ),
+    linear-gradient(
+      45deg,
+      transparent 47%,
+      var(--grey--dark) 47%,
+      var(--grey--dark) 53%,
+      transparent 53%
+    ),
+    linear-gradient(
+      135deg,
+      transparent 47%,
+      var(--grey--dark) 47%,
+      var(--grey--dark) 53%,
+      transparent 53%
+    );
+}
+
+.dark-mode-toggle__icon:after {
+  content: "";
+  position: absolute;
+  display: block;
+  background: var(--white);
+  border-radius: 0.7rem;
+  width: 1.4rem;
+  height: 1.4rem;
+  top: 50%;
+  left: 200%;
+  transform: translateY(-50%);
+  transition: left 0.3s;
+}
+
+.dark-mode-toggle:hover .dark-mode-toggle__icon {
+  background: var(--primary);
+}
+.dark-mode-toggle:hover .dark-mode-toggle__icon:before {
+  background-image: linear-gradient(
+      0deg,
+      transparent 47%,
+      var(--primary) 47%,
+      var(--primary) 53%,
+      transparent 53%
+    ),
+    linear-gradient(
+      90deg,
+      transparent 47%,
+      var(--primary) 47%,
+      var(--primary) 53%,
+      transparent 53%
+    ),
+    linear-gradient(
+      45deg,
+      transparent 48%,
+      var(--primary) 48%,
+      var(--primary) 52%,
+      transparent 52%
+    ),
+    linear-gradient(
+      135deg,
+      transparent 48%,
+      var(--primary) 48%,
+      var(--primary) 52%,
+      transparent 52%
+    );
+}
+
+:root[data-theme="light"] .dark-mode-toggle__icon:after {
+  left: 40%;
+}
+:root[data-theme="dark"] .dark-mode-toggle__icon {
+  width: 1.6rem;
+  height: 1.6rem;
+}
+:root[data-theme="dark"] .dark-mode-toggle__icon:before {
+  opacity: 1;
+}
+
+@keyframes spin__rays {
+  from {
+    transform: translate(-50%, -50%) rotate(0deg);
+  }
+  to {
+    transform: translate(-50%, -50%) rotate(90deg);
+  }
+}
+
+
+.hidden--visually {
+  border: 0;
+  clip: rect(0 0 0 0);
+  height: 1px;
+  margin: -1px;
+  overflow: hidden;
+  padding: 0;
+  position: absolute;
+  width: 1px;
+}
+    </style>
+
+</head>
+
+<body>
+   
+
+    <button class="js__dark-mode-toggle dark-mode-toggle" type="button">
+        <span class="dark-mode-toggle__icon"></span>
+        <span class="dark-mode-toggle__text hidden--visually">dark mode</span>
+      </button>
+    <div class="main">
+
+
+        <div class="heading">
+            <h1>Image Resizer</h1>
+        </div>
+        <div class="wrapper">
+
+            <div class="upload-box">
+                <input type="file" accept="image/*" hidden>
+                <img class="img-change" src="https://i.ibb.co/rsqTrzT/icons8-upload-96-1.png" alt="">
+                <p>Browse File to Upload</p>
+            </div>
+            <div class="content">
+                <div class="row sizes">
+                    <div class="column width">
+                        <label>Width</label>
+                        <input type="number">
+                    </div>
+                    <div class="column height">
+                        <label>Height</label>
+                        <input type="number">
+                    </div>
+                </div>
+                <div class="row checkboxes">
+                    <div class="column ratio">
+                        <input type="checkbox" id="ratio" checked>
+                        <label for="ratio">Lock aspect ratio</label>
+                    </div>
+                    <div class="column quality">
+                        <input type="checkbox" id="quality">
+                        <label for="quality">Reduce quality</label>
+                    </div>
+                </div>
+                <button class="download-btn">Download Image</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"
+        integrity="sha512-16esztaSRplJROstbIIdwX3N97V1+pZvV33ABoG1H2OyTttBxEGkTsoIVsiP1iaTtM8b3+hu2kB6pQ4Clr5yug=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+    <script>
+        // https://i.ibb.co/rsqTrzT/icons8-upload-96-1.png  white color
+        
+       
+
+        var imagePath = 'https://i.ibb.co/80hsQgJ/size.jpg';
+        var gitName = 'HoneyPaptan';
+        
+
+        
+const setDarkMode = (active = false) => {
+  const wrapper = document.querySelector(":root");
+  if (active) {
+    wrapper.setAttribute("data-theme", "dark");
+    // localStorage.setItem("theme", "dark");
+  } else {
+    wrapper.setAttribute("data-theme", "light");
+    // localStorage.setItem("theme", "light");
+  }
+};
+
+const toggleDarkMode = () => {
+  const theme = document.querySelector(":root").getAttribute("data-theme");
+  // If the current theme is "light", we want to activate dark
+  setDarkMode(theme === "light");
+};
+
+const initDarkMode = () => {
+  const query = window.matchMedia("(prefers-color-scheme: dark)");
+ 
+
+  let active = query.matches;
+
+
+  setDarkMode(active);
+
+  query.addListener(e => setDarkMode(e.matches));
+
+  const toggleButton = document.querySelector(".js__dark-mode-toggle");
+  toggleButton.addEventListener("click", toggleDarkMode);
+};
+
+initDarkMode();
+
+
+       
+
+        const uploadBox = document.querySelector(".upload-box"),
+            previewImg = uploadBox.querySelector("img"),
+            fileInput = uploadBox.querySelector("input"),
+            widthInput = document.querySelector(".width input"),
+            heightInput = document.querySelector(".height input"),
+            ratioInput = document.querySelector(".ratio input"),
+            qualityInput = document.querySelector(".quality input"),
+            downloadBtn = document.querySelector(".download-btn");
+
+        let ogImageRatio;
+
+        const loadFile = (e) => {
+            const file = e.target.files[0];
+            if (!file) return;
+            previewImg.src = URL.createObjectURL(file);
+            previewImg.addEventListener("load", () => {
+                widthInput.value = previewImg.naturalWidth;
+                heightInput.value = previewImg.naturalHeight;
+                ogImageRatio = previewImg.naturalWidth / previewImg.naturalHeight;
+                document.querySelector(".wrapper").classList.add("active");
+            });
+        }
+
+        widthInput.addEventListener("keyup", () => {
+
+            const height = ratioInput.checked ? widthInput.value / ogImageRatio : heightInput.value;
+            heightInput.value = Math.floor(height);
+        });
+
+        heightInput.addEventListener("keyup", () => {
+
+            const width = ratioInput.checked ? heightInput.value * ogImageRatio : widthInput.value;
+            widthInput.value = Math.floor(width);
+        });
+
+        const resizeAndDownload = () => {
+            const canvas = document.createElement("canvas");
+            const a = document.createElement("a");
+            const ctx = canvas.getContext("2d");
+
+
+            const imgQuality = qualityInput.checked ? 0.5 : 1.0;
+
+
+            canvas.width = widthInput.value;
+            canvas.height = heightInput.value;
+
+
+            ctx.drawImage(previewImg, 0, 0, canvas.width, canvas.height);
+
+
+            a.href = canvas.toDataURL("image/jpeg", imgQuality);
+            a.download = new Date().getTime();
+            a.click();
+        }
+
+        downloadBtn.addEventListener("click", resizeAndDownload);
+        fileInput.addEventListener("change", loadFile);
+        uploadBox.addEventListener("click", () => fileInput.click());
+
+
+
+        // gsap animations 
+
+        gsap.from(".heading", {
+            duration: 1,
+            opacity: 1,
+            y: "200",
+            ease: "expo.inOut"
+
+        })
+        gsap.from(".wrapper", {
+            duration: 2,
+            opacity: 0,
+            delay: 1,
+            x: "-200",
+            ease: "expo.inOut"
+
+        })
+    </script>
+
+</body>
+
+</html>
