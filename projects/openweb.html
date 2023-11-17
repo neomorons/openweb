@@ -16,7 +16,7 @@
             --gray5: #2a2e35;
             --hand-color: #333;
             --raised-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
-            --sky-color: #87CEEB; /* Sky Blue */
+            --sky-color: #87CEEB;
         }
 
         body {
@@ -33,14 +33,14 @@
 
         #frame {
             background-color: var(--sky-color);
-            width: 600px; /* Set the width as needed */
-            height: 400px; /* Set the height as needed */
+            width: 600px;
+            height: 400px;
             padding: 20px;
             display: flex;
             flex-direction: column;
             align-items: center;
             justify-content: center;
-            border-radius: 50% / 50px; /* Curved corners */
+            border-radius: 50% / 50px;
             box-shadow: var(--raised-shadow);
             margin-bottom: 20px;
             position: relative;
@@ -52,8 +52,8 @@
             position: relative;
             border: 6px solid #ffb6c1;
             border-radius: 50%;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.3); /* Add box shadow for lifted effect */
-            z-index: 1; /* Ensure the clock is above the frame */
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+            z-index: 1;
         }
 
         .hand {
@@ -65,7 +65,7 @@
             transform-origin: bottom;
             background-color: var(--hand-color);
             transform: translate(-50%, -100%) rotate(0deg);
-            z-index: 2; /* Ensure the clock hands are above the frame */
+            z-index: 2;
         }
 
         .hour {
@@ -95,11 +95,11 @@
         #num9 { bottom: 50%; left: 10px; transform: translateY(50%); }
 
         #themeToggleContainer {
-            margin-top: 20px; /* Added margin to separate the clock and toggler */
+            margin-top: 20px;
             display: flex;
             align-items: center;
             position: absolute;
-            bottom: 10px; /* Adjust the position as needed */
+            bottom: 10px;
         }
 
         .toggle-container {
@@ -182,14 +182,12 @@
                 localStorage.setItem('theme', body.classList.contains('dark') ? 'dark' : 'light');
             });
 
-            // Check the initial state of the toggle based on user preference or system settings
             const prefersDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches;
             if (prefersDarkMode) {
                 themeToggle.checked = true;
                 body.classList.add('dark');
             }
 
-            // Update the clock every second
             setInterval(updateClock, 1000);
 
             function updateClock() {
