@@ -3,50 +3,22 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <title>Light/Dark Mode Toggle</title>
     <link rel="stylesheet" href="index.css">
-    <title>Openweb Wizardry</title>
 </head>
 <body>
 
-    <header>
-        <div class="logo">
-            <img id="logo" src="logo.png" alt="Your Logo">
+    <div class="overlay">
+
+        <div class="toggle-container">
+            <div class="clock-icon"></div>
+            <label class="switch">
+                <input type="checkbox" id="modeToggle">
+                <span class="slider round"></span>
+            </label>
         </div>
-        <nav>
-            <ul>
-                <li><a href="#catalog">Project</a></li>
-                <li><a href="https://github.com/neomorons/openweb">Github</a></li>
-                <li><a href="https://github.com/neomorons/openweb">About</a></li>
-            </ul>
-        </nav>
-        <div class="toggle-btn">
-            <div class="wrapper">
-                <input id="dn" type="checkbox" /><label class="toggle" for="dn"><span class="toggle--handler"></span></label>
-            </div>
-        </div>
-    </header>
+    </div>
 
-    <main>
-        <section class="search-section">
-            <div class="search-box">
-                <i class="fa-solid fa-magnifying-glass fa-lg"></i>
-                <input type="text" id="searchInput" placeholder="Search Projects">
-            </div>
-        </section>
-
-        <section id="catalog">
-            <div class="catalog-item">
-                
-            </div>
-        </section>
-    </main>
-
-    <footer>
-        <span>&copy; 2023 Neomorons. All rights reserved</span>
-        <span>Made with ❤️</span>
-    </footer>
-
-    <script src="index.js"></script>
+    <script src="script.js"></script>
 </body>
 </html>
