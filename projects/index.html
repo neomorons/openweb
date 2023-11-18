@@ -1,0 +1,631 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portfolio</title>
+    <style>
+  
+        *{
+    margin: 0%;
+    padding: 0%;
+    box-sizing: border-box;
+    font-family: montserrat;
+    list-style: none;
+}
+ 
+
+html,body{
+    height: 100%;
+    width: 100%;
+}
+
+.main {
+    border-radius: 35%;
+    position: relative; 
+    /* pages dont overlap   */
+    overflow: hidden;
+    /* extra content hidden */
+    display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: var(--light-color);
+            margin: 0;
+}
+.page {
+    position: relative;
+    height: 100vh;
+    width: 100%;
+    background-color: #fff;
+    width: 80%;
+    padding: 20px;
+        background-color: #fff; /* Adjust background color as needed */
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Add shadow for a visual effect */
+            border-radius: 15px;
+}
+
+.page .main-img {
+    position: absolute;
+    border-radius: 50%;
+    right: 5%;
+    top: 55%;
+    transform: translateY(-50%);
+    width: 30%;
+}
+.nav{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0px 30px;
+    /* padding: top and bottom-0px and 30px for left and right  */
+    position: absolute;
+    z-index: 9;
+    height: 10%;
+    width: 100%;
+    background-color: white;
+}
+.centre-nav {
+    display: flex;
+    gap: 20px;
+}
+
+.centre-nav a{
+    text-transform: uppercase;
+    text-decoration: none;
+    color: black;
+    font-weight: 500;
+    font-size: 18px;
+}
+.nav input{
+    padding: 10px 5px;
+    border-radius: 10px;
+    border: 1px solid #dadadd;
+    text-transform: uppercase;
+
+}
+
+
+.page1 {
+    height: 100vh;
+    width: 100vh;
+    background-color: #fff;
+
+}
+
+.text {
+    padding: 30px 50px;
+    position: relative;
+    top: 18%;
+    height: 75%;
+    left: 8%;
+    width: 35%;
+    scale: 1.1;
+    
+}
+
+.text span{
+    color: #8873EF;
+    font-size: 40px;
+}
+
+.text h1{
+    font-size: 60px;
+    line-height: 1;
+    margin: 20px;
+}
+
+.text h4{
+    margin-top: 30px;
+    color: #2b2b2b;
+    font-size: 17px;
+    font-weight: 500;
+}
+
+.text h5{
+    color: #8873EF;
+    transform: rotate(-20deg);
+    position: absolute;
+    left: 3%;
+}
+.buttons {
+    position: absolute;
+    left: 0%;
+    bottom: 7%; 
+    height: 10%;
+    width: 100%;
+    
+}
+.buttons button{
+    padding: 10px 22px;
+    border-radius: 10px;
+    border: none;
+}
+
+.buttons img{
+    font-size: 7px;
+}
+.buttons .b1{
+    margin-left: 20px;
+    background-color: #8873EF;
+    font-weight: 500;
+}
+
+.buttons .b2{
+    margin-left: 20px;
+
+}
+
+.about-heading {
+    text-align: center;
+    color: #8873EF;
+    font-size: 36px;
+}
+
+.about-img img{
+position: absolute;
+left: 5%;
+top: 55%;
+transform: translateY(-50%);
+width: 25%;
+}
+
+.about-content h4{
+        padding: 20px 20px;
+        position: absolute;
+        top: 30%;
+        height: 80%;
+        right: 20%;
+        width: 35%;
+        font-size: 22px;     
+    }
+
+
+
+    .Skills-heading {
+        text-align: center;
+        color: #8873EF;
+        font-size: 36px;
+    }
+    
+    
+    .skills-content-1 {
+        text-transform: uppercase;
+        background-color: aquamarine;
+        width: 500px;
+        position: absolute;
+        top: 190px;
+        left: 0;
+        margin: 60px;
+        color: black;
+        padding: 20px;
+        box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22);
+    
+    }
+    
+    .skills-content-1 h3{
+        margin: 5px;
+    }
+    
+    .skills-content-1 li{
+        margin: 20px 0;
+        padding: 10px;
+    }
+    
+    .skills-content-1 .bar {
+        background-color: #8873EF;
+        display: block;
+        height: 20px;
+        border: 1px solid rgpa(0, 0, 0, 0.3);
+        border-radius: 10px;
+        overflow: hidden;
+        box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+        transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, );
+    }
+    
+     
+.skills-content-2 {
+        text-transform: uppercase;
+        background-color: aquamarine;
+        width: 500px;
+        position: absolute;
+        top: 190px;
+        right: 0;
+        margin: 60px;
+        color: black;
+        padding: 20px;
+        box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22);
+      }
+      
+      .skills-content-2 h3 {
+        margin: 5px;
+      }
+      
+      .skills-content-2 li {
+        margin: 20px 0;
+        padding: 10px;
+      }
+      
+      .skills-content-2 .bar {
+        background-color: #8873EF;
+        display: block;
+        height: 20px;
+        border: 1px solid rgba(0, 0, 0, 0.3);
+        border-radius: 10px;
+        overflow: hidden;
+        box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+        transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25);
+      }
+    
+    
+    .bar:hover{
+        box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22);
+    }
+    
+    .bar span{
+        height: 20px;
+        float: left;
+        background: linear-gradient(135deg, rgba(236, 0, 140, 1)0%,rgba(252,103,103,1)100%);
+    }
+    
+    .html {
+        width: 90%;
+        animation: html 3s;
+    }
+    
+    .css {
+        width: 80%;
+        animation: css 3s;
+    }
+    
+    .cpp {
+        width: 70%;
+        animation: cpp 3s;
+    }
+    
+    .java {
+        width: 60%;
+        animation: java 3s;
+    }
+    
+    .c {
+        width: 70%;
+        animation: c 3s;
+    }
+    
+    .javascript {
+        width: 30%;
+        animation: javascript 3s;
+    }
+    
+    @keyframes html {
+        0%{
+            width: 0%;
+        }
+        100%{
+            width: 90%;
+        }
+    }
+    
+    @keyframes css {
+        0%{
+            width: 0%;
+        }
+        100%{
+            width: 80%;
+        }
+    }
+    
+    @keyframes cpp {
+        0%{
+            width: 0%;
+        }
+        100%{
+            width: 70%;
+        }
+    }
+    
+    @keyframes java {
+        0%{
+            width: 0%;
+        }
+        100%{
+            width: 60%;
+        }
+    }
+    
+    @keyframes c {
+        0%{
+            width: 0%;
+        }
+        100%{
+            width: 70%;
+        }
+    }
+    
+    @keyframes javascript {
+        0%{
+            width: 0%;
+        }
+        100%{
+            width:  30%;}
+        }    
+
+.Contact-heading {
+            text-align: center;
+            color: #8873EF;
+            font-size: 36px;
+        }
+
+.contact-item {
+            padding: 30px 50px;
+            position: relative;
+            font-size: 25px;
+            top: 5%;
+            left: 25%;
+            scale: 1.1;
+            background-color: aquamarine;
+            width: 580px;
+            margin: 60px;
+            box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22);
+          }
+
+.contact-icon a{
+    margin: 0px 5px;
+    text-decoration: none;
+}
+
+/* ------------ VARIABLES ------------ */
+:root{
+  /* COLORS */
+  --color: #9176FF;
+  --dark-color: #2b2b2b;
+  --dark-icon-color: #fff;
+  --light-color: #f7f7f7;
+  --light-icon-color: #FFDE59;
+}
+
+/* ------------ BASE ------------ */
+/* *{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+} */
+
+body{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background-color: var(--light-color);
+  margin:0;
+}
+
+/* -------------- BUTTON -------------- */
+.btn{
+  background-color: #fff;
+  width: 10em;
+  height: 5em;
+  border-radius: 7em;
+  padding: 0 0.25em;
+
+  box-shadow: inset 0 6px 40px rgba(0,0,0, .1),
+              inset 0 6px 6px rgba(0,0,0, .1),
+              inset 0 -3px 3px rgba(0,0,0, .1);
+
+  position: relative;
+
+  display: flex;
+  align-items: center;
+
+  cursor: pointer;
+}
+
+.btn__indicator{
+  background-color: #fff;
+  width: 4em;
+  height: 4em;
+  border-radius: 50%;
+
+  position: absolute;
+
+  box-shadow: 0 8px 40px rgba(0,0,0, .2);
+
+  transition: transform .3s ease;
+}
+
+.btn__icon-container{
+  width: 100%;
+  height: 100%;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.btn__icon{
+  color: var(--light-icon-color);
+  font-size: rem;
+}
+
+/* -------------- ANIMATION ------------ */
+.btn__icon.animated{
+  animation: spin 0.5s;
+}
+
+@keyframes spin{
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* -------------- DARKMODE -------------- */
+body.darkmode{
+  background-color: var(--dark-color);
+}
+
+.darkmode .btn{
+  box-shadow: inset 0 8px 60px rgba(0,0,0, .3),
+              inset 8px 0 8px rgba(0,0,0, .3),
+              inset 0 -4px 4px rgba(0,0,0, .3);
+}
+
+.darkmode .btn__indicator{
+  transform: translateX(7em);
+  background-color: var(--dark-color);
+  box-shadow: 0 8px 40px rgba(0,0,0, .3);
+}
+
+.darkmode .btn__icon{
+  color: var(--dark-icon-color);
+}
+
+
+
+.para p{
+    text-align: center;
+    padding: 30px 30px;
+    text-decoration: solid;
+    color: black;
+    font-size: 24px;
+}
+
+/* -------------- TOGGLE CONTAINER -------------- */
+.toggle-container {
+  display: flex;
+  justify-content: center; /* Center horizontally */
+  align-items: center; /* Center vertically */
+  position: relative;
+  width: 80px; /* Width of the toggle container */
+  height: 40px; /* Height of the toggle container */
+}
+
+/* -------------- TOGGLE SLIDER -------------- */
+.toggle-slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #ccc;
+  border-radius: 20px; /* Half of the height to make it round */
+  transition: background-color 0.3s;
+}
+
+.toggle-slider:before {
+  position: absolute;
+  content: '';
+  height: 36px; /* Height of the circle */
+  width: 36px; /* Width of the circle */
+  left: 2px;
+  bottom: 2px;
+  background-color: #fff;
+  border-radius: 50%;
+  transition: transform 0.3s;
+}
+    </style>
+</head>
+<body>
+      
+    <div class="main">
+        <div class="page">
+            <!-- first image -->
+            <div class="nav">
+                <a href="index.html"><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAB4AAAAeCAYAAAA7MK6iAAAAAXNSR0IArs4c6QAAAalJREFUSEvt1r1rFEEYB+DnEjBpJGITSKGFFhZCGrEQIUIaCxGLoE1EwUbFv8BGLcS/IBHBQIJaGAKBkCKNoBBSBAsLG0ELLQSboNioIMrALCxzH/sZ0uS6m3vn9+zNzr47HXv06eyRqwk8i394Uefi68IBfRbBq3heFa8Dn8c6hiP2FxewUQWvCp/GG4wmyC9MYbssXgU+hrc41Cf8O07hUxm8LDwe/82RgtAvCKvyrQgvAx/EFk4WhcXf3+MMfg6qL4IP4BXOlkSzsk1M40+/eYPgIaziYkU0K1/Dpfisd0UMgp/iRk00mzaHO70y+sF38bAhmk0PWY/SrF5wviu1ZOvqbimcdqW24K7ulodP4B1G2tKSnN+YxIcwnodvYX6X0Cz2Jp6kcGj6YRdPxKrrONrwQj5jMWZ8xQLCsg98H7+Ojb+JHV4o56o8TqF2H85WbCl337KxsB+u9VjSVpf6Ae4nSPh+bx+Ox6TWdvWuL/VLXO5x327jcTLer+st40rV5/g4ZpIT5Q7Crv6RhI3FXX04Nx5Oniv4WBVu0rEK5xaduQoD6hb8BzUXUB+otONmAAAAAElFTkSuQmCC"/></a>
+            <div class="centre-nav">
+                <a href="About.html">About</a>
+                <a href="Skills.html">My Skills</a>
+                <a href="Contact.html">Contact</a>
+            </div>
+            <input type="text" placeholder="Search" >
+        </div>
+            <img src="My pic modified.jpg" class="main-img" alt=""> 
+            <div class="text">
+                <h5>Hello,It's Me</h5>
+                <h1>Ananya Kanwar</h1>
+                <h2>And I'm a <span id="colorname">Frontend Developer</span></h2>
+                <h4>I'm passionate, self-assured, and open to learning, and I believe in the power of ongoing development. I welcome mistakes I've made in the past as learning experiences and work hard to improve my abilities.</h4>
+                <div class="btn">
+                    <div class="btn__indicator">
+                      <div class="btn__icon-container">
+                        <i class="btn__icon fa-solid"></i>
+                      </div>
+                    </div>
+                  </div>
+                <div class="buttons">
+                    <button class="b1">LET'S TALK <a href="https://www.linkedin.com/in/ananya-kanwar-5bb46a247/"><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAB4AAAAeCAYAAAA7MK6iAAAAAXNSR0IArs4c6QAAAV9JREFUSEvt179LV2EUx/GX0BAIIWhSSA02GIS4uUX5D1R/hlRQzToJOiqC4uTmHyCEm6Dg1CyBoAQKoaWLo4MoB54Lj1cJv3zv917BzvY8l3Pe93zOeX51aci6GuK6U+DnGKxYiV84yGOWM36K31SuxAUGcFjAy+C32Kg42yLcGDZbAe/iGR62+UMtgd/hO7qxhjdtwG8N/oMnGWgcS3WAz9GL0wSbxbc6wMFYxzJe4TN66gK3wbnmeusah+eHTOovabySVIjvo4gGnMMW/uI1phBLM7eWwI9xkrwX8AnTmExzUYI9nJUgD7CNl9l8peAi7jCOcJyBPmKxk+BVvEesghH8TLAow49OgR9lPRCMCcwkWBw2+50Cv0g1LuLP42sa9JWkb6nG/ZnzTc01hJ0sq9jZorZh0ZjR5YX9B19ZgeXz+P5J3dheXRu4scteZNjI9bZKaf8Z6069JGrJ+hJQKIAfFGduPAAAAABJRU5ErkJggg=="/></button></a>
+                    <button class="b2">PORTFOLIO <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAB4AAAAeCAYAAAA7MK6iAAAAAXNSR0IArs4c6QAAAlJJREFUSEvF1kmoT3EUwPHPMxU2SmRIZChKWciQnaQkKYQsDAuRccdClJINFoRMKYSUsSwsRElRlLVEoUwZF0oWhs7r/nXf7d7f/b//e3pndesM39/53XPO77TpIWnrIa5WwFMxASOzQ7/BMzzpTBLNgsdjC5ZieAUgDnAJh/Gq7hB14CE4jsV1gXL6P9kBNuNLlV8KPA53MLoT0LzpC8ypyr4KHLDHiIy7Ih8wHa+LQcrA/fEIk7tCzPlG0c3Cz3y8MvAhbO0maCPMAWxLgUfhOfp1M/gHombeNeIWMz6CTRXQzwh9SuZjWoXBfmwvA8chPmJwIvIprEvoj2Jjhf5tbuh0mFxx0iiqOjmBDYh+LUrqxsJ2Ep7GR/6qV+NMHTXTn8OaEngq43BdhBtF8A7sbRJ8AStbAMdvOFYE78SeJsABXYXfJbZ1GZeCo2ji/6XkCpZn0F44i9uIqw+pA8fMv17MeB5uJaiXsQK/0AcXs9cqXNbidNZuVe0YdvGktj+f+eIaiK/oWwKPV2ZENvZCH5kvLNjFjU1JzIFPGNqoi+IAuYkFFVlfyyr5KuZW2LzEmArdSaxv6Irg2bibuO5vGNREARZNoucnZptKu67skXiImS0ET7mcz9rvn00ZeCzuZ/+0O/ixEMxAzPokOJRxLfeyYugKPBaBuL349x0ktfoMQxRSPOKtyAMswfsy57plr3f2gO/CgCbp37EbB7OeL3WrAzecov9ili+rWW9jqOxD9GxSmgXng8TzGXt2LPTRJv91oa9LoNP6VjLuNKTM4S/DEmofskZhiwAAAABJRU5ErkJggg=="/></button>
+                </div>
+            </div>
+            <!-- <div class="btn">
+                <div class="btn__indicator">
+                  <div class="btn__icon-container">
+                    <i class="btn__icon fa-solid"></i>
+                  </div>
+                </div>
+              </div> -->
+        </div>
+
+        
+        <script>
+            var imagePath = 'https://media.licdn.com/dms/image/D4D03AQGeq2rECIZ-Kg/profile-displayphoto-shrink_800_800/0/1691937017995?e=1705536000&v=beta&t=I5F3GdWrTG3Egx_sBQpt17_TPriGLdIZhfydw0SvowA';
+            var gitName = 'AnanyaKanwar';
+            const body = document.querySelector('body');
+const btn = document.querySelector('.btn');
+const icon = document.querySelector('.btn__icon');
+
+//to save the dark mode use the object "local storage".
+
+//function that stores the value true if the dark mode is activated or false if it's not.
+function store(value){
+  localStorage.setItem('darkmode', value);
+}
+
+//function that indicates if the "darkmode" property exists. It loads the page as we had left it.
+function load(){
+  const darkmode = localStorage.getItem('darkmode');
+
+  //if the dark mode was never activated
+  if(!darkmode){
+    store(false);
+    icon.classList.add('fa-sun');
+  } else if( darkmode == 'true'){ //if the dark mode is activated
+    body.classList.add('darkmode');
+    icon.classList.add('fa-moon');
+  } else if(darkmode == 'false'){ //if the dark mode exists but is disabled
+    icon.classList.add('fa-sun');
+  }
+}
+
+
+load();
+
+btn.addEventListener('click', () => {
+  if(document.getElementById("colorname").style.color=="pink")
+  document.getElementById("colorname").style.color="purple";
+else{
+  document.getElementById("colorname").style.color="pink";
+}
+
+  body.classList.toggle('darkmode');
+  icon.classList.add('animated');
+
+  //save true or false
+  store(body.classList.contains('darkmode'));
+
+  if(body.classList.contains('darkmode')){
+    icon.classList.remove('fa-sun');
+    icon.classList.add('fa-moon');
+  }else{
+    icon.classList.remove('fa-moon');
+    icon.classList.add('fa-sun');
+  }
+
+  setTimeout( () => {
+    icon.classList.remove('animated');
+  }, 500)
+})
+        </script>
+</body>
+</html>
