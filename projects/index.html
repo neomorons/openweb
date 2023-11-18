@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Animated Portfolio</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <div id="one" class="items"></div>
+    <div id="two" class="items"></div>
+    <div id="three" class="items"></div>
+    <div id="four" class="items"></div>
+    <div id="five" class="items"></div>
+    <div class="content ">
+        <div class="lef">
+            <div class="heading">Hello</div>
+            <div class="mid">I am Web Designer</div>
+            <div class="end">Alok kumar yadav</div>
+            <div class="viewme">Learn More -></div>
+            <div class="toggle-btn">
+                <div class="wrapper">
+                    <input id="dn" type="checkbox" /><label class="toggle" for="dn"><span
+                            class="toggle--handler"></span></label>
+                </div>
+            </div>
+        </div>
+
+        
+        <div id="contactsid" onclick="cont()" class="contact">
+            <div id="pone" class="phonenum">94839XXXXX</div><img id="naka" height="25px"
+                src="https://i.ibb.co/6mJ5wZp/Pngtree-call-icon-png-3621527.png" alt="">
+        </div>
+        <div id="incre" onclick="expand()" class="linke"><a id="perfect" class="match"
+                href="https://www.linkedin.com/in/samarth-kadam-119a25209/">www.linkedin</a><img id="linkedi"
+                height="30px" src="https://i.ibb.co/1drcWHL/Pngtree-linkedin-social-media-icon-3609691.png" alt="">
+        </div>
+        <div id="emailone" onclick="nextone()" class="emia">
+            <div id="gmailacc" class="account">samarthskadam14@gmail.com</div><img id="gmailpng" height="20px"
+                src="https://i.ibb.co/Hn4tC1T/gmail-logo-PNG2.png" alt="">
+        </div>
+    </div>
+    <script src="script.js"></script>
+    <script>
+        toggleModeCheckbox.addEventListener('change', function () {
+        const isDarkMode = this.checked;
+
+        document.body.classList.toggle('dark-mode', isDarkMode);
+        document.querySelectorAll('.dark-mode-toggle').forEach((el) => {
+            el.classList.toggle('dark-mode', isDarkMode);
+        });
+
+        // Add logic to update CSS variables based on the theme
+        updateTheme(isDarkMode);
+
+        // Apply grayscale effect to card images in dark mode
+        const cardImages = document.querySelectorAll('.card img');
+        cardImages.forEach((img) => {
+            img.classList.toggle('grayscale', isDarkMode);
+        });
+    });
+        const toggleModeCheckbox = document.getElementById('dn');
+        function updateTheme(isDarkMode) {
+            if (isDarkMode) {
+                logo.style.filter = 'none';
+                document.documentElement.style.setProperty('--primary-bg', '#6A6A6A');
+                document.documentElement.style.setProperty('--text-color', '#FFFFFF');
+                document.documentElement.style.setProperty('--border-color', '#959595');
+                document.documentElement.style.setProperty('--overlay-color', 'rgba(0, 0, 0, 0.8)');
+                document.documentElement.style.setProperty('--link-color', '#468EFF');
+                document.documentElement.style.setProperty('--link-hover-color', '#2B68FF');
+                document.documentElement.style.setProperty('--header-bg', '#000000');
+                document.documentElement.style.setProperty('--search-text-color', '#F1F4F5');
+                document.documentElement.style.setProperty('--footer-bg', '#000000');
+                document.documentElement.style.setProperty('--footer-text', '#FFFFFF');
+                document.documentElement.style.setProperty('--toggle-bg', 'linear-gradient(to bottom, #F5515F, #CD2942)');
+            } else {
+                logo.style.filter = 'invert(100%)';
+                document.documentElement.style.setProperty('--primary-bg', '#F1F4F5');
+                document.documentElement.style.setProperty('--secondary-bg', '#FAFAFB');
+                document.documentElement.style.setProperty('--text-color', '#333333');
+                document.documentElement.style.setProperty('--border-color', '#E5E5E5');
+                document.documentElement.style.setProperty('--overlay-color', 'rgba(0, 0, 0, 0.8)');
+                document.documentElement.style.setProperty('--link-color', '#468EFF');
+                document.documentElement.style.setProperty('--link-hover-color', '#2B68FF');
+                document.documentElement.style.setProperty('--header-bg', '#FFFFFF');
+                document.documentElement.style.setProperty('--search-text-color', '#636c72');
+                document.documentElement.style.setProperty('--footer-bg', '#FAFAFB');
+                document.documentElement.style.setProperty('--footer-text', '#4D4A4A');
+                document.documentElement.style.setProperty('--toggle-bg', 'linear-gradient(to bottom, #F5515F, #CD2942)');
+            }
+        }
+
+
+        function expand() {
+            var ones = document.getElementById('incre');
+            var pic = document.getElementById('linkedi');
+            var getit = document.getElementById('perfect');
+            if (ones.style.width === '45px') {
+                ones.style.width = '150px';
+                ones.style.transition = '.5s';
+                pic.style.display = 'none';
+                ones.style.borderRadius = '5px';
+                ones.style.marginLeft = '-16%';
+                getit.style.display = 'initial';
+
+            }
+            else {
+                getit.style.display = 'none';
+                ones.style.width = '45px';
+                pic.style.display = 'initial';
+                ones.style.marginLeft = '0%';
+                ones.style.borderRadius = '50%';
+            }
+
+        }
+        function nextone() {
+            var belon = document.getElementById('emailone');
+            var phot = document.getElementById('gmailpng');
+            var google = document.getElementById('gmailacc');
+            if (belon.style.width === '45px') {
+                belon.style.transition = '.5s';
+                belon.style.width = '240px';
+                phot.style.display = 'none';
+                belon.style.borderRadius = '5px';
+                belon.style.marginLeft = '-22.7%';
+                google.style.display = 'initial';
+            }
+            else {
+                belon.style.width = '45px';
+                belon.style.borderRadius = '50%';
+                phot.style.display = 'initial';
+                belon.style.marginLeft = '0%';
+                google.style.display = 'none';
+            }
+
+        }
+        function cont() {
+            var firstit = document.getElementById('contactsid');
+            var sayit = document.getElementById('pone');
+            var own = document.getElementById('naka');
+            if (firstit.style.width === '45px') {
+                firstit.style.transition = '.5s';
+                firstit.style.width = '130px';
+                sayit.style.display = 'initial';
+                firstit.style.borderRadius = '5px';
+                firstit.style.marginLeft = '-16%';
+                own.style.display = 'none';
+            }
+            else {
+                firstit.style.width = '45px';
+                firstit.style.borderRadius = '50%';
+                own.style.display = 'initial';
+                firstit.style.marginLeft = '0%';
+                sayit.style.display = 'none';
+            }
+
+        }
+
+    </script>
+    <script>
+        var imagePath = 'https://drive.google.com/file/d/1WwYC4aUCbHMP6uhj3nBEJ0w8Y2P_4kKW/view?usp=drivesdk';
+        var gitName = 'https://github.com/Alok-2003/';
+    </script>
+</body>
+
+</html>
