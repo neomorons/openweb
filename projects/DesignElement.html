@@ -1,0 +1,240 @@
+<link rel="stylesheet" href="/index.css">
+<title>Design Element</title>
+<link rel="stylesheet" href="/index.css">
+<style>
+    :root {
+        --bg-color: #0d0f1b;
+        --box-color:  #2196f3;
+    }
+
+    *{
+        margin: 0;
+        padding: 0;
+        font-family: 'Poppins', sans-serif;
+    }
+    .side1{ 
+        display: flex ;
+        align-items: center ;
+        justify-content: center ;
+        height: 100%;
+        width:100%;
+        border: white;
+        border-width: 10rem;
+    }
+    .side2{ 
+        position: relative;
+        display: flex ;
+        align-items: center ;
+        justify-content: center ;
+        height: 90vh;
+        width: 90vw;
+        border-radius: 5rem;
+        
+    }
+    .line1{ 
+        position: absolute;
+        top: 0;
+        left: 0;
+        height: 10rem;
+        width: 50.5%;
+        border-radius: 5rem 0 0;
+        -webkit-transform: rotate(-5deg);
+        -ms-transform: rotate(-5deg);
+    transform: rotate(-5deg);
+        background: var(--bg-color);
+    }
+    .line5{ 
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        height: 10rem;
+        width: 50.5%;
+        border-radius: 0 0 0 5rem;
+        -webkit-transform: rotate(5deg);
+        -ms-transform: rotate(5deg);
+        transform: rotate(5deg);
+        background: var(--bg-color);
+    }
+    .line6{ 
+        position: absolute;
+        bottom: 0;
+        right: 0;
+        height: 10rem;
+        width: 51%;
+        border-radius: 0 0 5rem 0;
+        -webkit-transform: rotate(-5deg);
+        -ms-transform: rotate(-5deg);
+        transform: rotate(-5deg);
+        background: var(--bg-color);
+    }
+    .line2{ 
+        position: absolute;
+        top: 0;
+        right: 0;
+        height: 10rem;
+        width: 51%;
+        border-radius: 0 5rem 0 0;
+        -webkit-transform: rotate(5deg);
+        -ms-transform: rotate(5deg);
+    transform: rotate(5deg);
+        background: var(--bg-color);
+    }
+    .line3{ 
+        position: absolute;
+        top: 5%;
+        left: 0;
+        height: 81%;
+        width: 50.5%;
+        border-radius: 5rem 0 0 0;
+      
+        background: var(--bg-color);
+    }
+    .line4{ 
+        position: absolute;
+        top: 5%;
+        right: 0;
+        height: 81%;
+        width: 50.5%;
+        border-radius: 0 5rem 0 0;
+      
+        background: var(--bg-color);
+    }
+    
+    .container{
+        border-radius: 5rem;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 80vh;
+        width: 80vw;
+        background: var(--bg-color);
+        overflow: hidden;
+    }
+    .container ul{
+        display: flex;
+        flex-direction: column;
+    }
+    .container ul li{
+        list-style: none;
+    }
+    .container ul li:before{
+        content: attr(data-text);
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        color: white;
+        font-size: 10em;
+        font-weight: 800;
+        pointer-events: none;
+        opacity: 0;
+        transition: 0.5s;
+        letter-spacing: 20px;
+        white-space: nowrap;
+    }
+    .container ul li:hover:before{
+        opacity: 0.05;
+        letter-spacing: 5px;
+    }
+    .container ul li a{
+        position: relative;
+        display: inline-block;
+        text-decoration: none;
+        color: #000;
+        font-size: 20px;
+        padding: 6px 15px;
+        background: var(--box-color);
+        font-weight: 500;
+        transition: all 0.3s ease;
+        text-transform: uppercase;
+        letter-spacing: 2px;
+        overflow: hidden;
+        z-index: 1;
+    }
+    .container ul:hover li a{
+        opacity: 0;
+    }
+    .container ul li a:hover{
+        transform: scale(1.4);
+        opacity: 1;
+        background: #ff3f81;
+        z-index: 50;
+    }
+    .container ul li a:before{
+        content: '';
+        position: absolute;
+        top: 0;
+        left: -100px;
+        width: 80px;
+        height: 100%;
+        background: linear-gradient(90deg, transparent, rgba(255, 255, 255,0.8), transparent);
+        transform: skewX(35deg);
+        transition: 0s;
+    }
+    .container li a:hover:before{
+        left: calc(100% + 100px);
+        transition: 0.5s;
+        transition-delay: 0.2s;
+    }
+    .xxxe{
+        position: absolute;
+    }
+    .bbs{
+        background: transparent;
+        border: none;
+        cursor: pointer;
+    }
+    .jss{
+        padding-left: 2rem;
+        padding-top: 2rem;
+        height: 40px;
+        width: 40px;
+    
+    }
+
+
+</style>
+<div id="toggle" style="filter: invert(0%);">
+    <div class="xxxe">
+    <button class="bbs" id="button"><img class="jss" src="https://cdn.discordapp.com/attachments/941091409509896283/1175025848148033536/5261864.png?ex=6569bb19&is=65574619&hm=3cfdec01a5ba6673e832bbdaf6e80889dc87cce0c8327676686d02edd8a15559&" alt=""></button>
+</div>
+    <div class="side1">
+        <div class="side2">
+            
+            <div class="line1"> </div>
+            <div class="line2"> </div>
+            <div class="line3"> </div>
+            <div class="line4"> </div>
+            <div class="line5"> </div>
+            <div class="line6"> </div>
+            
+            <div class="container">
+                
+                <ul>
+                    <li data-text="Home"><a href="#">Home</a></li>
+                    <li data-text="Github"><a href="https://github.com/neomorons/openweb">Github</a></li>
+                    <li data-text="About"><a href="https://github.com/neomorons/openweb">About</a></li>
+                    <li data-text="Team"><a href="">Team</a></li>
+                    <li data-text="Contact"><a href="">Contact</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+<script>
+    var imagePath = 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSPyBUL4txFmwhZ8Xr7JpRt_YMOZFLws11Wfw&usqp=CAU';
+    var gitName = 'itsrealkaran';
+    var button = document.getElementById('button'); // Assumes element with id='button'
+
+    button.onclick = function() {
+        var div = document.getElementById('toggle');
+        if (div.style.filter !== 'invert(100%)') {
+            div.style.filter = 'invert(100%)';
+        }
+        else {
+            div.style.filter = 'invert(0%)';
+        }
+    };
+   
+</script>
+</body>
