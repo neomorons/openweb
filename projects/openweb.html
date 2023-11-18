@@ -1,0 +1,214 @@
+<script>
+    var imagePath = 'https://avatars.githubusercontent.com/u/105759613?v=4';
+    var gitName = 'Pranav322';
+</script>
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Analog Clock with Theme Toggler</title>
+    <style>
+        :root {
+            --gray0: #f8f8f8;
+            --gray5: #2a2e35;
+            --hand-color: #333;
+            --raised-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+            --sky-color: #87CEEB;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            margin: 0;
+            background-color: var(--gray0);
+            transition: background-color 0.4s ease;
+        }
+
+        #frame {
+            background-color: var(--sky-color);
+            width: 600px;
+            height: 400px;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50% / 50px;
+            box-shadow: var(--raised-shadow);
+            margin-bottom: 20px;
+            position: relative;
+        }
+
+        #clock {
+            width: 200px;
+            height: 200px;
+            position: relative;
+            border: 6px solid #ffb6c1;
+            border-radius: 50%;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+            z-index: 1;
+        }
+
+        .hand {
+            position: absolute;
+            height: 50%;
+            width: 2px;
+            top: 50%;
+            left: 50%;
+            transform-origin: bottom;
+            background-color: var(--hand-color);
+            transform: translate(-50%, -100%) rotate(0deg);
+            z-index: 2;
+        }
+
+        .hour {
+            height: 40%;
+        }
+
+        .minute {
+            height: 45%;
+        }
+
+        .second {
+            height: 48%;
+            background-color: red;
+        }
+
+        .hour-number {
+            position: absolute;
+            font-size: 16px;
+            font-weight: bold;
+            color: var(--hand-color);
+            transform-origin: 50% 100%;
+        }
+
+        #num12 { top: 10px; left: 50%; transform: translateX(-50%); }
+        #num3 { bottom: 50%; left: calc(100% - 20px); transform: translateY(50%); }
+        #num6 { bottom: 10px; left: 50%; transform: translateX(-50%); }
+        #num9 { bottom: 50%; left: 10px; transform: translateY(50%); }
+
+        #themeToggleContainer {
+            margin-top: 20px;
+            display: flex;
+            align-items: center;
+            position: absolute;
+            bottom: 10px;
+        }
+
+        .toggle-container {
+            position: relative;
+            display: inline-block;
+            width: 60px;
+            height: 34px;
+        }
+
+        .toggle-input {
+            display: none;
+        }
+
+        .toggle-slider {
+            position: absolute;
+            cursor: pointer;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: #ccc;
+            border-radius: 34px;
+            transition: 0.4s;
+        }
+
+        .toggle-slider:before {
+            position: absolute;
+            content: "";
+            height: 26px;
+            width: 26px;
+            left: 4px;
+            bottom: 4px;
+            background-color: white;
+            border-radius: 50%;
+            transition: 0.4s;
+        }
+
+        .toggle-input:checked + .toggle-slider {
+            background-color: #2196F3;
+        }
+
+        .toggle-input:checked + .toggle-slider:before {
+            transform: translateX(26px);
+        }
+
+        .dark {
+            background-color: var(--gray5);
+            color: var(--gray0);
+        }
+    </style>
+</head>
+<body class="light">
+    <div id="frame">
+        <div id="clock">
+            <div class="hand hour" id="hourHand"></div>
+            <div class="hand minute" id="minuteHand"></div>
+            <div class="hand second" id="secondHand"></div>
+            <div class="hour-number" id="num12">12</div>
+            <div class="hour-number" id="num3">3</div>
+            <div class="hour-number" id="num6">6</div>
+            <div class="hour-number" id="num9">9</div>
+        </div>
+
+        <div id="themeToggleContainer">
+            <label></label>
+            <div class="toggle-container">
+                <input type="checkbox" class="toggle-input" id="themeToggle">
+                <label class="toggle-slider" for="themeToggle"></label>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const themeToggle = document.getElementById('themeToggle');
+            const body = document.body;
+
+            themeToggle.addEventListener('change', function() {
+                body.classList.toggle('dark');
+                localStorage.setItem('theme', body.classList.contains('dark') ? 'dark' : 'light');
+            });
+
+            const prefersDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches;
+            if (prefersDarkMode) {
+                themeToggle.checked = true;
+                body.classList.add('dark');
+            }
+
+            setInterval(updateClock, 1000);
+
+            function updateClock() {
+                const now = new Date();
+                const hours = now.getHours();
+                const minutes = now.getMinutes();
+                const seconds = now.getSeconds();
+
+                const hourHand = document.getElementById('hourHand');
+                const minuteHand = document.getElementById('minuteHand');
+                const secondHand = document.getElementById('secondHand');
+
+                const hourRotation = (hours % 12 + minutes / 60) * 360 / 12;
+                const minuteRotation = (minutes + seconds / 60) * 360 / 60;
+                const secondRotation = seconds * 360 / 60;
+
+                hourHand.style.transform = `translate(-50%, -100%) rotate(${hourRotation}deg)`;
+                minuteHand.style.transform = `translate(-50%, -100%) rotate(${minuteRotation}deg)`;
+                secondHand.style.transform = `translate(-50%, -100%) rotate(${secondRotation}deg)`;
+            }
+        });
+    </script>
+</body>
+</html>
